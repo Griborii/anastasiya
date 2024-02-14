@@ -39,6 +39,7 @@ class DKA:
         closure = set()
         for index in indexes:
             self.eps_closure_1(closure, nfa.get_node(index))
+        print(closure)
         return closure
 
     def put_final(self, nfa, set_from):

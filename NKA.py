@@ -5,6 +5,20 @@ class NKA:
         self.all = []
         self.size = sz
 
+    def print(self):
+        # print("finish_list:")
+        # for fin in self.finish_list:
+        #     print(fin)
+
+        for i in range(len(self.all)):
+            now = self.all[i]
+            print("node:", i)
+            for j in range(self.size):
+                if now.trans[j] is not None:
+                    print("(", j, "->", now.trans[j].num, ")")
+            for j in range(len(now.epsilon)):
+                print("(", "E", "->", now.epsilon[j].num, ")")
+
     def DFS(self):
         self.DFS_(self.start)
 

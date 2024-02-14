@@ -76,7 +76,7 @@ def regex_to_NFA(root, size):
         left = Node(size)
         right = Node(size)
         left.add_eps(ans_l[0])
-        right.add_eps(ans_r[0])
+        left.add_eps(ans_r[0])
         ans_l[1].add_eps(right)
         ans_r[1].add_eps(right)
         return (left, right)
@@ -98,13 +98,14 @@ def regex_to_NFA(root, size):
         # return {l.first, r.second};
 
 
-root = Build("((0+1)*).1")
+root = Build("(0+1)*")
 ans = regex_to_NFA(root, 2)
 ans[1].fin = 0
 nka = NKA(ans[0], ans[1], 2)
 nka.DFS()
-for elem in nka.all:
-    print(elem.num)
+nka.print()
+# for elem in nka.all:
+#     print(elem.num)
 
-dka = DKA(nka, {0:0, 1:1})
-dka.print()
+# dka = DKA(nka, {0:0, 1:1})
+# dka.print()
