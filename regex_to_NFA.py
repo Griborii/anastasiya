@@ -98,14 +98,14 @@ def regex_to_NFA(root, size):
         # return {l.first, r.second};
 
 
-root = Build("(0+1)*")
+root = Build("(0+1)")
 ans = regex_to_NFA(root, 2)
 ans[1].fin = 0
 nka = NKA(ans[0], ans[1], 2)
 nka.DFS()
-nka.print()
+# nka.print()
 # for elem in nka.all:
 #     print(elem.num)
 
-# dka = DKA(nka, {0:0, 1:1})
-# dka.print()
+dka = DKA(nka, {0:0, 1:1})
+dka.print()

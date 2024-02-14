@@ -67,7 +67,6 @@ def Index(string: str):
     return 0
 
 def Build(st):
-    print(st)
     if st[-1] == ')':
         st = st[1 : len(st) - 1]
     index = Index(st)
