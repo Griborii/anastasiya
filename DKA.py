@@ -15,16 +15,18 @@ class DKA:
 
 
     def print(self):
-        print("finish_list:")
-        for fin in self.finish_list:
-            print(fin)
-
+        print("dict: ", self.dct)
+        
         for i in range(len(self.states)):
             now = self.states[i]
             print("node:", i)
             for j in range(self.size):
                 if now.trans[j] is not None:
                     print("(", j, "->", now.trans[j].num, ")")
+
+        print("finish_list:")
+        for fin in self.finish_list:
+            print(fin)
 
     def eps_closure_1(self, closure, node):
         closure.add(node.num)

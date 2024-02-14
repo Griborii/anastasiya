@@ -98,14 +98,18 @@ def regex_to_NFA(root, size):
         # return {l.first, r.second};
 
 
-root = Build("(0+1)")
-ans = regex_to_NFA(root, 2)
-ans[1].fin = 0
-nka = NKA(ans[0], ans[1], 2)
-nka.DFS()
-# nka.print()
-# for elem in nka.all:
-#     print(elem.num)
+def count(st0):
+    dict2 = {}
+    spec_s = {'+', '*', '.', '(', ')'}
+    st = list(st0) 
+    for i in range(len(st)):
+        elem = st[i]
+        if elem not in spec_s and elem not in dict2:
+            dict2[elem] = len(dict2)
+        if elem not in spec_s:
+            st[i] = str(dict2[elem])
+    ans = ""
+    for elem in st:
+        ans += elem
+    return (dict2, ans)
 
-dka = DKA(nka, {0:0, 1:1})
-dka.print()
